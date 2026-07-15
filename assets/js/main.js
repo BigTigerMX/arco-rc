@@ -272,22 +272,32 @@
   ===================================================== */
   var loader = document.querySelector('.loader');
   var hero = document.querySelector('.hero');
-  function startSite() {
+  function enterHero() {
+    if (!hero) return;
+    hero.classList.add('enter');
+    hero.querySelectorAll('[data-split]').forEach(function (el) { el.classList.add('is-in'); });
+  }
+  function removeLoaderNow() {
+    document.body.classList.remove('loading');
+    if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+  }
+  function startWithLoader() {
     if (loader) loader.classList.add('done');
     document.body.classList.remove('loading');
-    if (hero) {
-      hero.classList.add('enter');
-      hero.querySelectorAll('[data-split]').forEach(function (el) { el.classList.add('is-in'); });
-    }
+    enterHero();
     setTimeout(function () { if (loader && loader.parentNode) loader.parentNode.removeChild(loader); }, 1200);
   }
-  if (reduceMotion) {
-    if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
-    document.body.classList.remove('loading');
-    if (hero) hero.classList.add('enter');
+  // La pantalla de carga solo aparece la PRIMERA vez que entras al sitio
+  // (no al navegar entre páginas dentro de la misma sesión).
+  var alreadyEntered = false;
+  try { alreadyEntered = sessionStorage.getItem('arcoEntered') === '1'; } catch (e) {}
+  if (reduceMotion || alreadyEntered) {
+    removeLoaderNow();
+    enterHero();
   } else {
+    try { sessionStorage.setItem('arcoEntered', '1'); } catch (e) {}
     var started = false;
-    var kick = function () { if (started) return; started = true; startSite(); };
+    var kick = function () { if (started) return; started = true; startWithLoader(); };
     // arranca poco después de estar listo el DOM; no espera a todas las imágenes
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
       setTimeout(kick, 900);
