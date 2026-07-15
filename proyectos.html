@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.className += ' js';</script>
 <title>Proyectos · ARCO Arquitectura &amp; Construcción</title>
 <meta name="description" content="Portafolio de ARCO — residencias, interiorismo, diseño y construcción. Explora nuestros proyectos por categoría.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%231f5f8b' stroke-width='2.6'%3E%3Cpath d='M4 37V20a16 16 0 0132 0v17'/%3E%3Cpath d='M13 37V23a7 7 0 0114 0v14'/%3E%3C/g%3E%3C/svg%3E">
@@ -10,7 +11,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="loading">
+
+<!-- ============ INTRO LOADER ============ -->
+<div class="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <span class="loader__mark">ARCO</span>
+    <span class="loader__sub">Arquitectura &amp; Construcción</span>
+  </div>
+  <span class="loader__bar"></span>
+</div>
 
 <!-- ============ HEADER ============ -->
 <header class="site-header">
@@ -38,7 +48,7 @@
 <section class="page-hero" style="background-image:url('assets/img/gallery/G18.jpg')">
   <div class="wrap page-hero__inner">
     <div class="breadcrumb"><a href="index.html">Inicio</a> &nbsp;/&nbsp; Proyectos</div>
-    <h1>Nuestro portafolio</h1>
+    <h1 data-split>Nuestro portafolio</h1>
     <p class="hero__desc" style="margin-top:1rem">Una selección de residencias, interiores y obras construidas por ARCO.</p>
   </div>
 </section>
@@ -54,7 +64,7 @@
       <button class="filter" data-filter="construction">Construcción</button>
     </div>
 
-    <div class="grid-gallery">
+    <div class="grid-gallery stagger">
       <div class="tile" data-cat="interior design"><img src="assets/img/gallery/G1.jpg" alt="Casa Roble"><span class="tile__plus">+</span><div class="tile__cap"><h4>Casa Roble</h4><span>Interiorismo</span></div></div>
       <div class="tile" data-cat="houses design"><img src="assets/img/gallery/G2.jpg" alt="Residencia Poniente"><span class="tile__plus">+</span><div class="tile__cap"><h4>Residencia Poniente</h4><span>Casas</span></div></div>
       <div class="tile" data-cat="houses construction"><img src="assets/img/gallery/G3.jpg" alt="Casa Cañada"><span class="tile__plus">+</span><div class="tile__cap"><h4>Casa Cañada</h4><span>Casas</span></div></div>
@@ -81,7 +91,7 @@
 <!-- ============ CTA ============ -->
 <section class="cta-banner" style="background-image:url('assets/img/gallery/G5.jpg')">
   <div class="wrap">
-    <h2>¿Listo para construir el tuyo?</h2>
+    <h2 data-split>¿Listo para construir el tuyo?</h2>
     <p>Cuéntanos tu idea y preparamos una propuesta a tu medida.</p>
     <a href="index.html#contacto" class="btn btn--solid">Solicitar propuesta</a>
   </div>
@@ -148,6 +158,11 @@
   <img src="" alt="">
   <div class="lb-cap"></div>
 </div>
+
+<!-- ============ CURSOR PERSONALIZADO ============ -->
+<div class="cursor" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor__label" aria-hidden="true"></div>
 
 <script src="assets/js/main.js"></script>
 </body>

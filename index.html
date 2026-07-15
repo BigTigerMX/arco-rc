@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.className += ' js';</script>
 <title>ARCO · Arquitectura & Construcción</title>
 <meta name="description" content="ARCO — Estudio de arquitectura y construcción. Diseñamos y edificamos espacios residenciales que integran piedra, madera y luz. Del concepto a la obra terminada.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%231f5f8b' stroke-width='2.6'%3E%3Cpath d='M4 37V20a16 16 0 0132 0v17'/%3E%3Cpath d='M13 37V23a7 7 0 0114 0v14'/%3E%3C/g%3E%3C/svg%3E">
@@ -10,7 +11,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="loading">
+
+<!-- ============ INTRO LOADER ============ -->
+<div class="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <span class="loader__mark">ARCO</span>
+    <span class="loader__sub">Arquitectura &amp; Construcción</span>
+  </div>
+  <span class="loader__bar"></span>
+</div>
 
 <!-- ============ HEADER ============ -->
 <header class="site-header">
@@ -43,7 +53,7 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="inicio">
-  <div class="hero__slides">
+  <div class="hero__slides" data-parallax="0.08">
     <div class="hero__slide is-active" style="background-image:url('assets/img/gallery/G10.jpg')"></div>
     <div class="hero__slide" style="background-image:url('assets/img/gallery/G5.jpg')"></div>
     <div class="hero__slide" style="background-image:url('assets/img/gallery/G18.jpg')"></div>
@@ -51,7 +61,7 @@
 
   <div class="hero__inner">
     <span class="eyebrow hero__eyebrow">Estudio de arquitectura &amp; construcción</span>
-    <h1>Construimos espacios que <em>perduran</em>.</h1>
+    <h1 data-split>Construimos espacios que <em>perduran</em>.</h1>
     <p class="hero__desc">Diseñamos y edificamos residencias donde la piedra, la madera y la luz se encuentran. Del concepto al último detalle de obra.</p>
     <div class="hero__actions">
       <a href="proyectos.html" class="btn btn--light">Ver proyectos</a>
@@ -69,17 +79,25 @@
 
 <!-- ============ STATS ============ -->
 <section class="stats" aria-label="Cifras del estudio">
-  <div class="stat reveal"><div class="stat__num">18</div><div class="stat__label">Años de trayectoria</div></div>
-  <div class="stat reveal" data-d="1"><div class="stat__num">140+</div><div class="stat__label">Proyectos entregados</div></div>
-  <div class="stat reveal" data-d="2"><div class="stat__num">95k</div><div class="stat__label">m² construidos</div></div>
-  <div class="stat reveal" data-d="3"><div class="stat__num">100%</div><div class="stat__label">Clientes satisfechos</div></div>
+  <div class="stat reveal"><div class="stat__num" data-count="18">0</div><div class="stat__label">Años de trayectoria</div></div>
+  <div class="stat reveal" data-d="1"><div class="stat__num" data-count="140" data-suffix="+">0</div><div class="stat__label">Proyectos entregados</div></div>
+  <div class="stat reveal" data-d="2"><div class="stat__num" data-count="95" data-suffix="k">0</div><div class="stat__label">m² construidos</div></div>
+  <div class="stat reveal" data-d="3"><div class="stat__num" data-count="100" data-suffix="%">0</div><div class="stat__label">Clientes satisfechos</div></div>
 </section>
+
+<!-- ============ MARQUESINA ============ -->
+<div class="marquee marquee--dark" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Arquitectura</span><span>Construcción</span><span>Interiorismo</span><span>Diseño</span><span>Remodelación</span>
+    <span>Arquitectura</span><span>Construcción</span><span>Interiorismo</span><span>Diseño</span><span>Remodelación</span>
+  </div>
+</div>
 
 <!-- ============ ESTUDIO / SOBRE ============ -->
 <section class="section" id="estudio">
   <div class="wrap split">
     <div class="split__media reveal">
-      <img src="assets/img/gallery/G6.jpg" alt="Interior residencial diseñado por ARCO">
+      <div class="reveal-img"><img src="assets/img/gallery/G6.jpg" alt="Interior residencial diseñado por ARCO"></div>
       <div class="badge">
         <strong>2008</strong>
         <span>Desde entonces edificando</span>
@@ -87,7 +105,7 @@
     </div>
     <div class="split__text reveal" data-d="1">
       <span class="eyebrow">El estudio</span>
-      <h2 class="section-title">Arquitectura honesta, construcción impecable.</h2>
+      <h2 class="section-title" data-split>Arquitectura honesta, construcción impecable.</h2>
       <p class="lead">En ARCO integramos diseño y obra bajo un mismo techo. Acompañamos cada proyecto desde la primera idea hasta la entrega de llaves, cuidando la materialidad, la luz natural y el detalle constructivo.</p>
       <p class="lead" style="margin-top:1.2rem">Creemos en las tradiciones del oficio y las combinamos con soluciones contemporáneas para crear espacios que envejecen bien y se viven mejor.</p>
       <p class="signature">Rodrigo Cabrera
@@ -101,7 +119,7 @@
 <section class="section section--dark" id="servicios">
   <div class="wrap">
     <span class="eyebrow">Lo que hacemos</span>
-    <h2 class="section-title">Un solo equipo, todo el proceso.</h2>
+    <h2 class="section-title" data-split>Un solo equipo, todo el proceso.</h2>
     <p class="lead">Diseño arquitectónico, construcción y remodelación integrados para que tu proyecto avance sin fricciones.</p>
 
     <div class="grid-services">
@@ -139,7 +157,7 @@
     <div class="gallery-head">
       <div>
         <span class="eyebrow">Portafolio</span>
-        <h2 class="section-title" style="margin-bottom:0">Proyectos recientes</h2>
+        <h2 class="section-title" data-split style="margin-bottom:0">Proyectos recientes</h2>
       </div>
       <a href="proyectos.html" class="btn">Ver todos
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -185,7 +203,7 @@
 <section class="cta-banner" style="background-image:url('assets/img/gallery/G3.jpg')">
   <div class="wrap">
     <span class="eyebrow hero__eyebrow" style="justify-content:center">Empecemos</span>
-    <h2>¿Tienes un terreno o una idea?<br>Hagámosla realidad.</h2>
+    <h2 data-split>¿Tienes un terreno o una idea?<br>Hagámosla realidad.</h2>
     <p>Cuéntanos qué imaginas. Preparamos una propuesta de diseño y presupuesto sin compromiso.</p>
     <a href="#contacto" class="btn btn--solid">Solicitar propuesta</a>
   </div>
@@ -195,7 +213,7 @@
 <section class="section" id="proceso">
   <div class="wrap">
     <span class="eyebrow">Cómo trabajamos</span>
-    <h2 class="section-title">Del boceto a las llaves.</h2>
+    <h2 class="section-title" data-split>Del boceto a las llaves.</h2>
     <div class="steps">
       <div class="step reveal"><div class="step__n">01</div><h3>Escucha</h3><p>Entendemos tus necesidades, tu terreno y tu presupuesto para definir el alcance.</p></div>
       <div class="step reveal" data-d="1"><div class="step__n">02</div><h3>Diseño</h3><p>Desarrollamos el anteproyecto, los planos ejecutivos y los renders para visualizarlo.</p></div>
@@ -210,7 +228,7 @@
   <div class="wrap contact">
     <div class="reveal">
       <span class="eyebrow">Contacto</span>
-      <h2 class="section-title">Conversemos sobre tu proyecto.</h2>
+      <h2 class="section-title" data-split>Conversemos sobre tu proyecto.</h2>
       <p class="lead" style="margin-bottom:2rem">Estamos listos para escucharte. Escríbenos y te respondemos en menos de 24 horas.</p>
       <ul class="contact__info">
         <li>
@@ -302,6 +320,11 @@
   <img src="" alt="">
   <div class="lb-cap"></div>
 </div>
+
+<!-- ============ CURSOR PERSONALIZADO ============ -->
+<div class="cursor" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor__label" aria-hidden="true"></div>
 
 <script src="assets/js/main.js"></script>
 </body>
