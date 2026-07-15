@@ -16,12 +16,26 @@
   /* ---------- Menú móvil ---------- */
   var toggle = document.querySelector('.nav__toggle');
   var links = document.querySelector('.nav__links');
+  function setMenu(open) {
+    if (!links || !toggle) return;
+    links.classList.toggle('open', open);
+    toggle.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.classList.toggle('no-scroll', open);
+  }
   if (toggle && links) {
     toggle.addEventListener('click', function () {
-      links.classList.toggle('open');
+      setMenu(!links.classList.contains('open'));
     });
     links.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () { links.classList.remove('open'); });
+      a.addEventListener('click', function () { setMenu(false); });
+    });
+    // Cerrar con Escape o al ampliar a escritorio
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setMenu(false);
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 760) setMenu(false);
     });
   }
 
