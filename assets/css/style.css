@@ -177,7 +177,7 @@ body.no-scroll{overflow:hidden}
 .service:hover{background:var(--white)}
 .service__ico{width:44px;height:44px;color:var(--accent);margin-bottom:1.4rem}
 .service__ico svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.1}
-.service h3{font-size:1.5rem;margin-bottom:.7rem}
+.service h3{font-size:1.5rem;margin-bottom:.7rem;color:var(--ink)}
 .service p{font-size:.95rem;color:var(--ink-soft)}
 .service__n{font-size:.7rem;letter-spacing:.2em;color:var(--stone);display:block;margin-bottom:1.2rem}
 
@@ -224,7 +224,7 @@ body.no-scroll{overflow:hidden}
    ========================================================= */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem}
 .step{position:relative}
-.step__n{font-family:var(--serif);font-size:3.2rem;color:var(--paper-2);line-height:1}
+.step__n{font-family:var(--serif);font-size:3.2rem;color:#bdb4a4;line-height:1}
 .section--dark .step__n{color:#333}
 .step h3{font-size:1.4rem;margin:.4rem 0 .6rem}
 .step p{font-size:.92rem;color:var(--ink-soft)}
@@ -254,6 +254,12 @@ body.no-scroll{overflow:hidden}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
 .field label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
 .form__note{font-size:.78rem;color:var(--stone)}
+/* Contacto sobre sección oscura: texto legible (evita oscuro-sobre-oscuro) */
+.section--dark .field input,
+.section--dark .field textarea{color:var(--paper)}
+.section--dark .field label,
+.section--dark .form__note,
+.section--dark .contact__info small{color:#b3ac9f}
 
 /* =========================================================
    FOOTER
