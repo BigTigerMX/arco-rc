@@ -357,7 +357,8 @@
       }).then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
-      }).then(function () {
+      }).then(function (j) {
+        if (!j || String(j.success) !== 'true') throw new Error(j && j.message);
         if (note) note.textContent = 'Gracias por tu mensaje. Te contactaremos muy pronto.';
         form.reset();
       }).catch(function () {
