@@ -309,15 +309,63 @@
   }
 
   /* =====================================================
-     13. FORMULARIO (demo) + AÑO
+     13. FORMULARIO (FormSubmit + WhatsApp) + AÑO
   ===================================================== */
   var form = document.querySelector('.form');
   if (form) {
+    // Correo principal (respaldo) vía FormSubmit; copia al correo del sitio.
+    var MAIL_ENDPOINT = 'https://formsubmit.co/ajax/luis.santi.tiger@gmail.com';
+    var MAIL_CC = 'contacto@arco-rc.com';
+    var WA_NUMBER = '525567832622'; // +52 55 6783 2622
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      var nombre = form.querySelector('#n').value.trim();
+      var telefono = form.querySelector('#t').value.trim();
+      var correo = form.querySelector('#e').value.trim();
+      var mensaje = form.querySelector('#m').value.trim();
       var note = form.querySelector('.form__note');
-      if (note) note.textContent = 'Gracias por tu mensaje. Te contactaremos muy pronto.';
-      form.reset();
+      var btn = form.querySelector('button[type="submit"]');
+
+      // WhatsApp al número del estudio (se abre dentro del gesto del
+      // usuario para que el navegador no bloquee la ventana).
+      var waText = 'Hola, soy ' + nombre + '.\n' +
+        'Correo: ' + correo + (telefono ? '\nTeléfono: ' + telefono : '') +
+        '\n\nMi proyecto: ' + mensaje;
+      window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waText), '_blank', 'noopener');
+
+      btn.disabled = true;
+      var btnText = btn.textContent;
+      btn.textContent = 'Enviando…';
+
+      fetch(MAIL_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          Nombre: nombre,
+          Telefono: telefono || 'No proporcionado',
+          Correo: correo,
+          Mensaje: mensaje,
+          _subject: 'Nuevo mensaje desde arco-rc.com — ' + nombre,
+          _replyto: correo,
+          _cc: MAIL_CC,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      }).then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      }).then(function () {
+        if (note) note.textContent = 'Gracias por tu mensaje. Te contactaremos muy pronto.';
+        form.reset();
+      }).catch(function () {
+        if (note) note.textContent = 'No se pudo enviar el correo. Escríbenos por WhatsApp o a ' + MAIL_CC + '.';
+      }).finally(function () {
+        btn.disabled = false;
+        btn.textContent = btnText;
+      });
     });
   }
   document.querySelectorAll('.year').forEach(function (y) { y.textContent = new Date().getFullYear(); });

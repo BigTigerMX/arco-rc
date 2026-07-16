@@ -245,13 +245,14 @@
       </ul>
     </div>
 
-    <form class="form reveal" data-d="1" novalidate>
+    <form class="form reveal" data-d="1" action="https://formsubmit.co/luis.santi.tiger@gmail.com" method="POST">
       <div class="row">
-        <div class="field"><label for="n">Nombre</label><input id="n" type="text" required></div>
-        <div class="field"><label for="t">Teléfono</label><input id="t" type="tel"></div>
+        <div class="field"><label for="n">Nombre</label><input id="n" name="Nombre" type="text" required></div>
+        <div class="field"><label for="t">Teléfono</label><input id="t" name="Telefono" type="tel"></div>
       </div>
-      <div class="field"><label for="e">Correo</label><input id="e" type="email" required></div>
-      <div class="field"><label for="m">Cuéntanos tu proyecto</label><textarea id="m" required></textarea></div>
+      <div class="field"><label for="e">Correo</label><input id="e" name="Correo" type="email" required></div>
+      <div class="field"><label for="m">Cuéntanos tu proyecto</label><textarea id="m" name="Mensaje" required></textarea></div>
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
       <button class="btn btn--solid" type="submit">Enviar mensaje</button>
       <p class="form__note">Al enviar aceptas ser contactado por el equipo de ARCO.</p>
     </form>
