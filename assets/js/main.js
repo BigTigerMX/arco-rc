@@ -309,14 +309,13 @@
   }
 
   /* =====================================================
-     13. FORMULARIO (FormSubmit + WhatsApp) + AÑO
+     13. FORMULARIO (FormSubmit) + AÑO
   ===================================================== */
   var form = document.querySelector('.form');
   if (form) {
     // Correo principal (respaldo) vía FormSubmit; copia al correo del sitio.
     var MAIL_ENDPOINT = 'https://formsubmit.co/ajax/luis.santi.tiger@gmail.com';
     var MAIL_CC = 'contacto@arco-rc.com';
-    var WA_NUMBER = '525567832622'; // +52 55 6783 2622
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -328,13 +327,6 @@
       var mensaje = form.querySelector('#m').value.trim();
       var note = form.querySelector('.form__note');
       var btn = form.querySelector('button[type="submit"]');
-
-      // WhatsApp al número del estudio (se abre dentro del gesto del
-      // usuario para que el navegador no bloquee la ventana).
-      var waText = 'Hola, soy ' + nombre + '.\n' +
-        'Correo: ' + correo + (telefono ? '\nTeléfono: ' + telefono : '') +
-        '\n\nMi proyecto: ' + mensaje;
-      window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waText), '_blank', 'noopener');
 
       btn.disabled = true;
       var btnText = btn.textContent;
